@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+const name = ref('')
 </script>
 
 <template>
@@ -14,6 +17,8 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+
+      <input type="text" :value="name" @input="name = (<HTMLInputElement>$event.target).value" />
     </div>
   </header>
 
