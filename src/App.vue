@@ -8,9 +8,7 @@ const name = ref('')
 
 <template>
   <header>
-    <Teleport to="body">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    </Teleport>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -18,9 +16,12 @@ const name = ref('')
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/charts">Charts</RouterLink>
       </nav>
 
-      <input type="text" :value="name" @input="name = (<HTMLInputElement>$event.target).value" />
+      <Teleport to="body">
+        <input type="text" :value="name" @input="name = (<HTMLInputElement>$event.target).value" />
+      </Teleport>
     </div>
   </header>
 
@@ -61,6 +62,16 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+input {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 
 @media (min-width: 1024px) {
