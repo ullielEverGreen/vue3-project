@@ -1,12 +1,57 @@
-
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, provide } from 'vue'
 import Son from './components/Son.vue'
+import Daughter from './components/Daughter.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import type DaughterVue from './components/Daughter.vue'
 
 const name = ref('')
+const car = ref(8)
+const dimond = ref(3)
+const house = ref(16)
+const daughter = ref()
+const son = ref()
 const message = ref('You did it!')
+
+const addHouse = () => {
+  house.value += 1
+}
+
+const minusHouse = (n: number) => {
+  house.value -= n
+}
+
+const updateCar = () => {
+  car.value += 1
+}
+
+const addSave = () => {
+  daughter.value.save += 8888
+}
+
+const getAll = (children: any) => {
+  for (let i in children) {
+    console.log(children[i])
+    if (children[i].save) {
+      children[i].save += 888
+    } else if (children[i].salary) {
+      children[i].salary -= 123
+    }
+  }
+}
+
+defineExpose({ car })
+
+const addDimond = (n: number) => {
+  dimond.value += n
+}
+
+const minusDimond = () => {
+  dimond.value -= 1
+}
+
+provide('dimond', { dimond, addDimond, minusDimond })
 </script>
 
 <template>
@@ -29,10 +74,29 @@ const message = ref('You did it!')
 
   <RouterView /> -->
 
-  <Son />
+  <div class="wrapper">
+    <h2>父组件</h2>
+
+    <div @click="addHouse">房本：{{ house }}本</div>
+    <div>车子：{{ car }}辆</div>
+    <div>钻石：{{ dimond }}个</div>
+    <div><button @click="addSave">给女儿增加一些存款</button></div>
+    <div><button @click="getAll($refs)">获取所有子女组件</button></div>
+    <!-- <Daughter ref="daughter" /> -->
+    <Son ref="son" :house="house" :car="car" :updateCar="updateCar" :minusHouse="minusHouse" />
+  </div>
 </template>
 
 <style scoped>
+.wrapper {
+  min-height: 300px;
+  width: 500px;
+  padding-left: 50px;
+  padding-top: 50px;
+  background-color: skyblue;
+  border-radius: 20px;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

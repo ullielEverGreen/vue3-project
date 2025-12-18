@@ -2,34 +2,35 @@
 import { ref } from 'vue'
 import GrandChild from './GrandChild.vue'
 
-const salary = ref(60000)
+const save = ref(9000000)
+
+const addCar = (father: any) => {
+  father.car += 1
+}
 
 defineProps(['minusHouse'])
-defineExpose({ salary })
+defineExpose({ save })
 </script>
 
 <template>
   <div class="wrapper">
     <div>
-      <h2>子组件</h2>
+      <h2>女儿组件</h2>
 
-      薪酬: {{ salary }}
+      存款: ${{ save }}
 
-      <div><button @click="minusHouse(2)">点击减少祖的房本的数量</button></div>
+      <div><button @click="addCar($parent)">点击增加祖的车子数量</button></div>
     </div>
-
-    <GrandChild v-bind="$attrs"></GrandChild>
   </div>
 </template>
 
 <style scoped>
 .wrapper {
   margin-top: 50px;
-  min-height: 100px;
   width: 500px;
   padding-top: 50px;
   padding-left: 50px;
-  background-color: salmon !important;
+  background-color: greenyellow !important;
   border-radius: 20px;
 }
 </style>
