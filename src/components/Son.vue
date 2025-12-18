@@ -26,7 +26,7 @@ defineExpose({ salary })
 .wrapper {
   margin-top: 50px;
   min-height: 100px;
-  width: 500px;
+  width: 200px;
   padding-top: 50px;
   padding-left: 50px;
   background-color: salmon !important;

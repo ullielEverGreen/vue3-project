@@ -4,6 +4,7 @@ import Son from './components/Son.vue'
 import Daughter from './components/Daughter.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Count from './components/Count.vue'
 import type DaughterVue from './components/Daughter.vue'
 
 const name = ref('')
@@ -55,9 +56,12 @@ provide('dimond', { dimond, addDimond, minusDimond })
 </script>
 
 <template>
-  <!-- <header>
+  <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    <div class="wrapper">
+
+    <Count />
+
+    <!-- <div class="wrapper">
       <HelloWorld :msg="message" />
 
       <nav>
@@ -69,12 +73,12 @@ provide('dimond', { dimond, addDimond, minusDimond })
       <Teleport to="body">
         <input type="text" :value="name" @input="name = (<HTMLInputElement>$event.target).value" />
       </Teleport>
-    </div>
+    </div> -->
   </header>
 
-  <RouterView /> -->
+  <RouterView />
 
-  <div class="wrapper">
+  <!-- <div class="wrapper">
     <h2>父组件</h2>
 
     <div @click="addHouse">房本：{{ house }}本</div>
@@ -82,9 +86,9 @@ provide('dimond', { dimond, addDimond, minusDimond })
     <div>钻石：{{ dimond }}个</div>
     <div><button @click="addSave">给女儿增加一些存款</button></div>
     <div><button @click="getAll($refs)">获取所有子女组件</button></div>
-    <!-- <Daughter ref="daughter" /> -->
+    <Daughter ref="daughter" />
     <Son ref="son" :house="house" :car="car" :updateCar="updateCar" :minusHouse="minusHouse" />
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
