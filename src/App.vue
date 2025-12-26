@@ -59,13 +59,12 @@ provide('dimond', { dimond, addDimond, minusDimond })
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <Count />
-
-    <!-- <div class="wrapper">
+    <div class="wrapper">
       <HelloWorld :msg="message" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/chat">Chat</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/charts">Charts</RouterLink>
       </nav>
@@ -73,7 +72,7 @@ provide('dimond', { dimond, addDimond, minusDimond })
       <Teleport to="body">
         <input type="text" :value="name" @input="name = (<HTMLInputElement>$event.target).value" />
       </Teleport>
-    </div> -->
+    </div>
   </header>
 
   <RouterView />
